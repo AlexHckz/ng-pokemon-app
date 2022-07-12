@@ -21,12 +21,11 @@ export class DetailPokemonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
     const pokemonId: string | null = this.route.snapshot.paramMap.get('id');
     console.log(pokemonId);
 
     if (pokemonId) {
-      this.pokemon = this.pokemonService.getPokemonById(+pokemonId);
+      this.pokemonService.getPokemonById(+pokemonId).subscribe(pokemon => this.pokemon = pokemon);
     }
   }
   
@@ -37,5 +36,11 @@ export class DetailPokemonComponent implements OnInit {
   goToEditPokemon(pokemon: Pokemon) {
     this.router.navigate(['edit/pokemon/', pokemon.id])
   }
+
+  deletePokemon(pokemon: Pokemon) {
+    this.pokemonService.deletePokemonById(pokemon.id)
+      .subscribe(() => this.goToPokemonList());
+  }
+  
 
 }

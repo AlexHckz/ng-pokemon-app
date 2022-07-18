@@ -20,8 +20,8 @@ export class ListPokemonComponent {
     private pokemonService : PokemonService
     ) {};
     
-    ngOnInit() {
-      this.pokemonService.getPokemonList().subscribe(pokemonList => this.pokemonList = pokemonList);
+  ngOnInit() {
+    this.pokemonService.getPokemonList().subscribe(pokemonList => this.pokemonList = pokemonList);
   }
 
   goToPokemon(pokemon : Pokemon) {

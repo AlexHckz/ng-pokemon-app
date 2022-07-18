@@ -7,6 +7,7 @@ import { PokemonService } from '../pokemon.service';
   selector: 'app-detail-pokemon',
   templateUrl: './detail-pokemon.component.html',
   styles: [
+    '.mr-2 { margin-right: 1em; }'
   ]
 })
 export class DetailPokemonComponent implements OnInit {
@@ -41,6 +42,6 @@ export class DetailPokemonComponent implements OnInit {
     this.pokemonService.deletePokemonById(pokemon.id)
       .subscribe(() => this.goToPokemonList());
   }
-  
+
 
 }

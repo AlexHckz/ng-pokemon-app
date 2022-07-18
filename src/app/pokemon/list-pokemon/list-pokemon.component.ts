@@ -13,14 +13,15 @@ export class ListPokemonComponent {
   pokemonSelected: Pokemon | undefined;
   pokemonLink: string | undefined;
   pokemonList: Pokemon[];
-
+  addPokemon: string = "/pokemon/add";
+  
   constructor(
     private router: Router,
     private pokemonService : PokemonService
-  ) {};
-
-  ngOnInit() {
-    this.pokemonService.getPokemonList().subscribe(pokemonList => this.pokemonList = pokemonList);
+    ) {};
+    
+    ngOnInit() {
+      this.pokemonService.getPokemonList().subscribe(pokemonList => this.pokemonList = pokemonList);
   }
 
   goToPokemon(pokemon : Pokemon) {

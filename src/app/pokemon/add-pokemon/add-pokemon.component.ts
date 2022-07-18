@@ -21,6 +21,7 @@ export class AddPokemonComponent implements OnInit {
     private pokemonService: PokemonService
   ) {
   }
+  
   ngOnInit() {
     this.pokemon = new Pokemon(); 
   }

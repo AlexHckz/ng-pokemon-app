@@ -26,9 +26,16 @@ export class PokemonService {
   
   getPokemonById(pokemonId: number): Observable<Pokemon|undefined> {
     return this.http.get<Pokemon>(`api/pokemons/${pokemonId}`).pipe(
-      tap((pokemon) => this.log(pokemon)), 
+      tap((pokemon) => this.log(pokemon)),
       catchError((err) => this.handleError(err, undefined))
-    )
+    );
+  }
+
+  searchPokemonList(term: string): Observable<Pokemon[]> {
+    return this.http.get<Pokemon[]> (`api/pokemons/?name=${term}`).pipe(
+      tap((response) => this.log(response)),
+      catchError((err) => this.handleError(err, []))
+    );
   }
 
   updatePokemon(pokemon: Pokemon): Observable<null> {
@@ -56,10 +63,11 @@ export class PokemonService {
   
   deletePokemonById(pokemonId: number): Observable<null> {
     return this.http.delete(`api/pokemons/${pokemonId}`).pipe(
-      tap((response) => this.log(response)), 
+      tap((response) => this.log(response)),
       catchError((err) => this.handleError(err, undefined))
-    )
+    );
   }
+
   
   getPokemonTypeList() : string[] {
     return [
